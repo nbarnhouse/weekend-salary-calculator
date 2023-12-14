@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="scripts/client.js"></script>
+  <title>Salary Calculator</title>
+</head>
+<body>
+  <header>
+    <h1>Salary Calculator</h1>
+  </header>
+  <main>
+    <h2>Add Employee</h2>
+
+    <form id="myForm" onsubmit="addEmp(event)">
+      <input class="field" type="text" data-testid="firstNameInput" id="firstNameInput" name="firstNameInput" placeholder="First Name">
+      <input class="field" type="text" data-testid="lastNameInput" id="lastNameInput" name="lastNameInput" placeholder="Last Name">
+      <input class="field" type="number" data-testid="idInput" id="idInput" name="idInput" placeholder="ID">
+      <input class="field" type="text" data-testid="titleInput" id="titleInput" name="titleInput" placeholder="Title">
+      <input class="field" type="number" data-testid="annualSalaryInput" id="annualSalaryInput" name="annualSalaryInput" placeholder="Annual Salary"> <br>
+      <input type="submit" data-testid="submitButton" id="submit" name="submit">
+    
+    </form>
+
+    <h2>Employees</h2>
+    <table>
+      <thead>
+        <tr>        
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>ID</th>
+          <th>Title</th>
+          <th>Annual Salary</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody id="employeeData">
+        <tr>
+          <td>Nicole</td>
+          <td>Barnhouse</td>
+          <td>44567</td>
+          <td>Project Manager</td>
+          <td>$72000</td>
+          <td><button onclick="this.closest('tr').remove()">Delete</button></td>
+        </tr>
+      </tbody> 
+    </table>
+  </main>
+
+  <footer id="footerElement">
+    <p>Total Monthly: $ <span id="TotalMonthly">6000</span>
+    </p>
+  </footer>
+
+</body>
+</html>
