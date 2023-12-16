@@ -2,6 +2,9 @@
 let currentIndex = 1;
 let totalMonthly = 6000;
 
+    let totalIncomeMonthly = document.querySelector('#TotalMonthly');
+    totalIncomeMonthly.innerHTML = `${totalMonthly}`;
+
 //Form submission function
 function addEmp(event) {
     event.preventDefault();
@@ -33,20 +36,33 @@ function addEmp(event) {
         form.reset();
 
     //Bring in Monthly Total to the page
-    let totalIncomeMonthly = document.querySelector('#TotalMonthly');
+    let allSalaries = 0;
+    let salaryCells = document.querySelectorAll('#employeeData td:nth-child(5)');
 
-    let footerElement = document.querySelector('#footerElement');
-    totalMonthly += salaryVal /12;
+    for (let salaryCell of salaryCells) {
+        let salary = parseFloat(salaryCell.textContent.replace('$', ''));
+        allSalaries += salary;
+    }
 
+    //Divide by 12 to make a monthly cost
+    totalMonthly = allSalaries /12;
+    //Convert number to 2 decimal places
     totalMonthly = totalMonthly.toFixed(2);
 
+    //Analyze value and apply overbudget css
+    let totalIncomeMonthly = document.querySelector('#TotalMonthly');
+    totalIncomeMonthly.innerHTML = `${totalMonthly}`;
+    let footerElement = document.querySelector('#footerElement');
+
     if (totalMonthly > 20000) {
-        footerElement.classList.add('over-budget');
+        TotalMonthly.classList.add('over-budget');
+    } else {
+        TotalMonthly.classList.remove('over-budget');
     }
     
+    //Add total to DOM
     totalIncomeMonthly.innerHTML = `${totalMonthly}`;
     console.log(`Current Index: ${currentIndex}`)
-    
 
 };
 
